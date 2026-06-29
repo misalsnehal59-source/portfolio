@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Snehal Misal · Portfolio</title>
+        <!-- Font Awesome 6 (free) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            }
+
+            body {
+                background: #f2f4fa;
+                color: #1a1f2e;
+                line-height: 1.6;
+                padding: 2rem 1.5rem;
+            }
+
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+                background: white;
+                border-radius: 2.5rem;
+                box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.10);
+                padding: 2.5rem 2.5rem;
+            }
+
+            /* ===== header / nav ===== */
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+                margin-bottom: 2.8rem;
+            }
+
+            .logo {
+                font-size: 1.9rem;
+                font-weight: 700;
+                letter-spacing: -0.3px;
+                background: linear-gradient(145deg, #1d3a5c, #3a6b9f);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            .logo i {
+                margin-right: 8px;
+                color: #2a4f7a;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 2.2rem;
+                font-weight: 500;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: #1f2a44;
+                transition: color 0.2s;
+                font-size: 1rem;
+            }
+
+            .nav-links a:hover {
+                color: #2a5f8a;
+            }
+
+            .nav-links a i {
+                margin-right: 6px;
+                opacity: 0.7;
+            }
+
+            /* ===== hero ===== */
+            .hero {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2rem;
+                margin-bottom: 3.5rem;
+                background: #eef3fc;
+                padding: 2rem 2.2rem;
+                border-radius: 2.5rem;
+            }
+
+            .hero-content {
+                flex: 1 1 280px;
+            }
+
+            .hero-content .badge {
+                background: #d5e2f7;
+                color: #1a3a66;
+                display: inline-block;
+                padding: 0.3rem 1.2rem;
+                border-radius: 40px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                letter-spacing: 0.3px;
+                margin-bottom: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+                font-weight: 700;
+                line-height: 1.2;
+                margin-bottom: 0.6rem;
+                color: #0a1a30;
+            }
+
+            .hero-content h1 span {
+                background: linear-gradient(135deg, #1d3a5c, #3a6b9f);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+                color: #28405e;
+                margin-bottom: 1.5rem;
+                font-weight: 500;
+            }
+
+            .hero-content p {
+                color: #2c3f5a;
+                max-width: 450px;
+                margin-bottom: 1.8rem;
+            }
+
+            .hero-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 0.75rem 1.8rem;
+                border-radius: 60px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: 0.2s;
+                border: none;
+                cursor: default;
+            }
+
+            .btn-primary {
+                background: #1d3a5c;
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background: #142f4a;
+                transform: scale(1.02);
+            }
+
+            .btn-outline {
+                background: transparent;
+                color: #1d3a5c;
+                border: 1.5px solid #b3c9e8;
+            }
+
+            .btn-outline i {
+                color: #2a5f8a;
+            }
+
+            .btn-outline:hover {
+                border-color: #1d3a5c;
+                background: #e5eefa;
+            }
+
+            .hero-avatar {
+                flex: 0 0 160px;
+                text-align: center;
+            }
+
+            .avatar-placeholder {
+                width: 160px;
+                height: 160px;
+                border-radius: 50%;
+                background: linear-gradient(145deg, #aec3e0, #7a9bc9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4.5rem;
+                color: white;
+                box-shadow: 0 15px 25px -8px rgba(25, 50, 90, 0.2);
+                margin: 0 auto;
+            }
+
+            /* ===== sections ===== */
+            .section-title {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin: 2.2rem 0 1rem 0;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .section-title i {
+                color: #1d3a5c;
+                font-size: 1.6rem;
+                opacity: 0.8;
+            }
+
+            .divider {
+                height: 3px;
+                width: 60px;
+                background: linear-gradient(90deg, #6b8fc9, #1d3a5c);
+                border-radius: 10px;
+                margin: 0.2rem 0 1.8rem 0;
+            }
+
+            /* ===== cards (projects) ===== */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+                gap: 1.8rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .project-card {
+                background: #f4f8ff;
+                border-radius: 1.8rem;
+                padding: 1.6rem 1.5rem;
+                transition: 0.2s ease;
+                border: 1px solid #e0e9f9;
+            }
+
+            .project-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 24px -10px rgba(25, 50, 90, 0.12);
+                border-color: #b3c9ed;
+            }
+
+            .project-card i {
+                font-size: 2rem;
+                color: #1d3a5c;
+                background: white;
+                padding: 0.6rem;
+                border-radius: 14px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+                margin-bottom: 0.8rem;
+            }
+
+            .project-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .project-card p {
+                color: #314a6b;
+                font-size: 0.92rem;
+                margin-bottom: 1rem;
+            }
+
+            .project-tag {
+                display: inline-block;
+                background: white;
+                padding: 0.15rem 0.9rem;
+                border-radius: 30px;
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #1a3a66;
+                border: 1px solid #cddef7;
+                margin-right: 4px;
+            }
+
+            /* ===== info rows ===== */
+            .info-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+                background: #f4f8ff;
+                padding: 1.8rem 2rem;
+                border-radius: 2rem;
+                margin: 1.5rem 0 2rem 0;
+            }
+
+            .info-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .info-item i {
+                width: 32px;
+                font-size: 1.2rem;
+                color: #1d3a5c;
+            }
+
+            .info-item strong {
+                font-weight: 600;
+                color: #0a1a30;
+                display: block;
+                font-size: 0.9rem;
+            }
+
+            .info-item span {
+                color: #28405e;
+                font-size: 0.95rem;
+            }
+
+            /* ===== education & skills ===== */
+            .edu-skill-wrap {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem 3rem;
+                margin: 1.5rem 0 2rem 0;
+            }
+
+            .edu-box {
+                flex: 2 1 280px;
+                background: #f4f8ff;
+                padding: 1.6rem 2rem;
+                border-radius: 2rem;
+            }
+
+            .edu-box h3 {
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 0.8rem;
+                color: #0a1a30;
+            }
+
+            .edu-box p {
+                margin-bottom: 0.4rem;
+                color: #1d3254;
+            }
+
+            .skill-box {
+                flex: 1 1 220px;
+                background: #f4f8ff;
+                padding: 1.6rem 2rem;
+                border-radius: 2rem;
+            }
+
+            .skill-box h3 {
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 1rem;
+                color: #0a1a30;
+            }
+
+            .skill-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.6rem 0.9rem;
+            }
+
+            .skill-tags span {
+                background: white;
+                padding: 0.2rem 1.2rem;
+                border-radius: 40px;
+                border: 1px solid #cddef7;
+                font-size: 0.85rem;
+                font-weight: 500;
+                color: #1a3a66;
+            }
+
+            /* ===== achievements & declaration ===== */
+            .achieve-declare {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                margin: 2rem 0 1.5rem 0;
+            }
+
+            .achieve-box {
+                flex: 1 1 200px;
+                background: #eef3fc;
+                padding: 1.6rem 1.8rem;
+                border-radius: 2rem;
+            }
+
+            .achieve-box h3 {
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 0.8rem;
+                color: #0a1a30;
+            }
+
+            .achieve-box ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .achieve-box li {
+                margin-bottom: 0.5rem;
+                display: flex;
+                align-items: baseline;
+                gap: 10px;
+                color: #1d3254;
+            }
+
+            .achieve-box li i {
+                color: #1d3a5c;
+                width: 18px;
+                font-size: 0.9rem;
+            }
+
+            .declare-box {
+                flex: 1 1 200px;
+                background: #e6eefa;
+                padding: 1.6rem 1.8rem;
+                border-radius: 2rem;
+            }
+
+            .declare-box h3 {
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 0.6rem;
+                color: #0a1a30;
+            }
+
+            .declare-box p {
+                color: #1d3254;
+                font-style: italic;
+                font-size: 0.95rem;
+            }
+
+            .declare-box .signature {
+                margin-top: 1rem;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                font-weight: 500;
+                color: #0a1a30;
+            }
+
+            /* ===== footer ===== */
+            footer {
+                margin-top: 3rem;
+                border-top: 1px solid #dce4f3;
+                padding-top: 1.8rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                color: #314a6b;
+                font-size: 0.9rem;
+            }
+
+            footer i {
+                color: #1d3a5c;
+                margin: 0 4px;
+            }
+
+            /* ===== responsive ===== */
+            @media (max-width: 700px) {
+                .container {
+                    padding: 1.8rem 1.2rem;
+                }
+
+                .hero {
+                    padding: 1.5rem;
+                    flex-direction: column-reverse;
+                    text-align: center;
+                }
+
+                .hero-content h1 {
+                    font-size: 2.2rem;
+                }
+
+                .hero-actions {
+                    justify-content: center;
+                }
+
+                .navbar {
+                    flex-direction: column;
+                    align-items: start;
+                }
+
+                .nav-links {
+                    flex-wrap: wrap;
+                    gap: 1.2rem;
+                }
+
+                .avatar-placeholder {
+                    width: 130px;
+                    height: 130px;
+                    font-size: 3.8rem;
+                }
+
+                .info-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .hero-actions .btn {
+                    width: 100%;
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <!-- ====== NAV ====== -->
+            <nav class="navbar">
+                <div class="logo"><i class="fas fa-microchip"></i> Snehal Misal</div>
+                <div class="nav-links">
+                    <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+                    <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+                    <a href="#contact"><i class="fas fa-id-card"></i> Contact</a>
+                </div>
+            </nav>
+
+            <!-- ====== HERO ====== -->
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="badge"><i class="fas fa-bolt" style="margin-right:6px;"></i> Diploma · E&TC </div>
+                    <h1>Snehal <span>Misal</span></h1>
+                    <div class="subtitle"><i class="fas fa-antenna" style="margin-right:8px; color:#1d3a5c;"></i>
+                        Electronic & Telecommunication Engineer</div>
+                    <p><i class="fas fa-quote-left" style="color:#1d3a5c; opacity:0.6; margin-right:6px;"></i> Applying
+                        technical knowledge & skills for organizational growth.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-right"></i> View Projects</a>
+                        <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact</a>
+                    </div>
+                </div>
+                <div class="hero-avatar">
+                    <div class="avatar-placeholder">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== PERSONAL INFO ====== -->
+            <div class="info-grid">
+                <div class="info-item"><i class="fas fa-user"></i>
+                    <div><strong>Name</strong><span>Snehal Siddheshwar Misal</span></div>
+                </div>
+                <div class="info-item"><i class="fas fa-envelope"></i>
+                    <div><strong>Email</strong><span>snehalmisal552@gmail.com</span></div>
+                </div>
+                <div class="info-item"><i class="fas fa-phone-alt"></i>
+                    <div><strong>Mobile</strong><span>8459598730</span></div>
+                </div>
+                <div class="info-item"><i class="fas fa-calendar-alt"></i>
+                    <div><strong>DOB</strong><span>19 DEC 2007</span></div>
+                </div>
+                <div class="info-item"><i class="fas fa-map-pin"></i>
+                    <div><strong>Address</strong><span>At Post - Chinake, Tal-Sangola, Dist-Solapur, MH</span></div>
+                </div>
+            </div>
+
+            <!-- ====== EDUCATION ====== -->
+            <section id="education">
+                <div class="section-title"><i class="fas fa-university"></i> Educational Qualification</div>
+                <div class="divider"></div>
+                <div class="edu-skill-wrap">
+                    <div class="edu-box">
+                        <h3><i class="fas fa-diploma"></i> Diploma in E&TC</h3>
+                        <p><strong>Institute :</strong> Shivaji Polytechnic College, Sangola</p>
+                        <p><strong>University :</strong> MSBTE, Mumbai</p>
+                        <p><strong>Year of Study :</strong> Third Year</p>
+                        <p><strong>Percentage :</strong> 81%</p>
+                        <p
+                            style="margin-top: 0.8rem; background: white; padding: 0.3rem 1rem; border-radius: 40px; display: inline-block; border:1px solid #cddef7;">
+                            <i class="fas fa-star" style="color:#f5b342;"></i> First class with Distinction</p>
+                    </div>
+                    <div class="skill-box">
+                        <h3><i class="fas fa-tools"></i> Technical Skills</h3>
+                        <div class="skill-tags">
+                            <span>Basic Electronic</span>
+                            <span>Analog Electronic</span>
+                            <span>Digital Electronic</span>
+                            <span>Communication (Basic)</span>
+                            <span>8051 Microcontroller</span>
+                            <span>C Programming</span>
+                            <span>Multisim (Basic)</span>
+                            <span>MS Office</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== PROJECTS ====== -->
+            <section id="projects">
+                <div class="section-title"><i class="fas fa-flask"></i> Academic Projects</div>
+                <div class="divider"></div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Automatic Street Light</h3>
+                        <p>LDR-based controller that switches street lights automatically based on ambient light.</p>
+                        <span class="project-tag">LDR</span>
+                        <span class="project-tag">Analog</span>
+                    </div>
+                    <div class="project-card">
+                        <i class="fas fa-radio"></i>
+                        <h3>FM Transmitter</h3>
+                        <p>Built an FM transmitter using 8051 microcontroller for short-range audio transmission.</p>
+                        <span class="project-tag">8051</span>
+                        <span class="project-tag">RF</span>
+                    </div>
+                    <div class="project-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Digital Clock</h3>
+                        <p>7-segment display clock with time-keeping functionality using discrete logic.</p>
+                        <span class="project-tag">7-segment</span>
+                        <span class="project-tag">Digital</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== ACHIEVEMENTS + DECLARATION ====== -->
+            <div class="achieve-declare">
+                <div class="achieve-box">
+                    <h3><i class="fas fa-trophy"></i> Achievements</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Secured First class with Distinction in First Year</li>
+                        <li><i class="fas fa-users"></i> Participated in State Level Technical Quiz Buzz</li>
+                    </ul>
+                </div>
+                <div class="declare-box">
+                    <h3><i class="fas fa-feather-alt"></i> Declaration</h3>
+                    <p>I hereby declare that the above information is true and correct to the best of my knowledge.</p>
+                    <div class="signature">
+                        <span><i class="fas fa-calendar-day"></i> Date : 08/06/2026</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Place : Sangola</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== CONTACT (footer) ====== -->
+            <section id="contact" style="margin-top: 1.5rem;">
+                <div
+                    style="display: flex; flex-wrap: wrap; gap: 2rem; background: #eef3fc; padding: 1.8rem 2rem; border-radius: 2rem; align-items: center; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.2rem; display: flex; align-items: center; gap: 10px;"><i
+                                class="fas fa-address-card" style="color:#1d3a5c;"></i> Get in touch</h3>
+                        <p style="color:#1d3254;"><i class="fas fa-envelope"
+                                style="margin-right: 8px; color:#1d3a5c;"></i> snehalmisal552@gmail.com</p>
+                        <p style="color:#1d3254;"><i class="fas fa-phone" style="margin-right: 8px; color:#1d3a5c;"></i>
+                            8459598730</p>
+                    </div>
+                    <div style="display: flex; gap: 1.2rem;">
+                        <a href="#" style="color: #1d3a5c; font-size: 1.6rem;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: #1d3a5c; font-size: 1.6rem;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="color: #1d3a5c; font-size: 1.6rem;"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ====== FOOTER ====== -->
+            <footer>
+                <span>© 2026 Snehal Misal · <i class="fas fa-microchip"></i> E&TC Diploma</span>
+                <span><i class="fas fa-robot"></i> always learning · building the future</span>
+            </footer>
+
+        </div>
+        <!-- end container -->
+    </body>
+
+    </html>
+    
+
+</body>
+
+</html>

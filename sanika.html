@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanika Misal · Portfolio</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- html2canvas for download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    /* ----- COLOR THEME ----- */
+    :root {
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --blue: #2563eb;
+      --blue-light: #38bdf8;
+      --purple: #7c3aed;
+      --purple-light: #a855f7;
+      --white: #ffffff;
+      --light: #f8fafc;
+      --text: #cbd5e1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--navy);
+      color: white;
+      padding-top: 80px;
+      overflow-x: hidden;
+      top: 0 !important;
+    }
+
+    .goog-te-banner-frame {
+      display: none !important;
+    }
+    .skiptranslate {
+      display: none !important;
+    }
+
+    /* ----- NAVBAR ----- */
+    .navbar {
+      background: rgba(15, 23, 42, .85);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+    }
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--blue-light), var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin-left: 15px;
+      transition: .3s;
+    }
+    .nav-link:hover {
+      color: var(--blue-light) !important;
+    }
+
+    /* ----- HERO & COMMON ----- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #312e81, #0f172a);
+    }
+    .badge-custom {
+      background: rgba(56, 189, 248, .15);
+      border: 1px solid rgba(56, 189, 248, .3);
+      color: var(--blue-light);
+      padding: 10px 20px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--blue-light), var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--text);
+      font-size: 1.1rem;
+    }
+    .hero-avatar {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, .1);
+      padding: 8px;
+      box-shadow: 0 0 40px rgba(56, 189, 248, .3), 0 0 80px rgba(124, 58, 237, .2);
+    }
+    .btn-custom {
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border: none;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: .4s;
+    }
+    .btn-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(124, 58, 237, .3);
+    }
+    .btn-outline-custom {
+      border: 2px solid var(--blue-light);
+      color: var(--blue-light);
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    .btn-outline-custom:hover {
+      background: var(--blue-light);
+      color: white;
+    }
+    .section-padding {
+      padding: 50px 0;
+    }
+    .section-title {
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      position: absolute;
+      left: 50%;
+      bottom: -15px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      border-radius: 50px;
+    }
+    .about-card {
+      background: rgba(255, 255, 255, .05);
+      padding: 30px;
+      border-radius: 20px;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, .05);
+      transition: .4s;
+    }
+    .about-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* scrollable gallery */
+    .task-scroll {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      gap: 20px !important;
+      padding: 20px 0 !important;
+      width: 100% !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+    .task-scroll-item {
+      display: block !important;
+      width: 250px !important;
+      flex-shrink: 0 !important;
+      text-decoration: none !important;
+      color: white !important;
+    }
+    .task-scroll-item .card-bg {
+      background: rgba(255, 255, 255, .05) !important;
+      border-radius: 15px !important;
+      overflow: hidden !important;
+      border: 1px solid rgba(255, 255, 255, .05) !important;
+      width: 100% !important;
+    }
+    .task-scroll-item img {
+      display: block !important;
+      width: 100% !important;
+      height: 140px !important;
+      object-fit: cover !important;
+    }
+    .task-scroll-item h5 {
+      padding: 12px !important;
+      text-align: center !important;
+      font-size: 1rem !important;
+      margin: 0 !important;
+    }
+    .about-img {
+      width: 320px;
+      max-width: 100%;
+      border-radius: 25px;
+      border: 3px solid rgba(255, 255, 255, .1);
+      box-shadow: 0 0 30px rgba(56, 189, 248, .30);
+      transition: .5s;
+    }
+    .about-img:hover {
+      transform: scale(1.03);
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+    .email-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: .4s;
+    }
+    .email-link:hover {
+      color: #a855f7;
+      text-shadow: 0 0 10px #38bdf8, 0 0 20px #a855f7;
+    }
+    .whatsapp-float {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 30px;
+      text-decoration: none;
+      z-index: 999;
+    }
+    #topBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      border: none;
+      color: white;
+      font-size: 24px;
+      border-radius: 50%;
+      display: none;
+      z-index: 999;
+    }
+
+    /* skill progress */
+    .skill-item {
+      margin-bottom: 25px;
+    }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .progress {
+      height: 14px;
+      background: #1e293b;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .progress-bar.html { background: linear-gradient(90deg, #ff6b6b, #ff9f43); }
+    .progress-bar.css { background: linear-gradient(90deg, #4facfe, #00f2fe); }
+    .progress-bar.bootstrap { background: linear-gradient(90deg, #667eea, #764ba2); }
+    .progress-bar.js { background: linear-gradient(90deg, #f6d365, #fda085); }
+    .progress-bar.c { background: linear-gradient(90deg, #43e97b, #38f9d7); }
+    .progress-bar.dbms { background: linear-gradient(90deg, #fa709a, #fee140); }
+
+    .table-dark {
+      background: transparent;
+    }
+    .table-dark td, .table-dark th {
+      border-color: rgba(255, 255, 255, .1);
+    }
+
+    .view-btn {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--blue-light);
+      color: var(--blue-light);
+      border-radius: 40px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: 0.3s;
+      margin-top: 8px;
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .view-btn:hover {
+      background: var(--blue-light);
+      color: var(--navy);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+
+    /* download button style */
+    .download-section-btn {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--blue-light);
+      color: white;
+      border-radius: 50px;
+      padding: 8px 24px;
+      font-weight: 500;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .download-section-btn:hover {
+      background: var(--blue-light);
+      color: var(--navy);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    }
+
+    @media(max-width:768px) {
+      .hero { text-align: center; padding: 80px 0; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero-avatar { width: 180px; height: 180px; margin-top: 30px; }
+      .section-padding { padding: 70px 0; }
+    }
+
+    /* modal image fit */
+    .modal-content { background: #1e293b; color: white; }
+    .modal-header { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .modal-body img { width: 100%; border-radius: 12px; }
+
+    /* Google translate */
+    .nav-translate { display: flex; align-items: center; }
+    #google_translate_element { margin-left: 10px; }
+    .goog-logo-link, .goog-te-gadget span { display: none !important; }
+    .goog-te-gadget { color: transparent !important; font-size: 0; }
+    .goog-te-gadget select { font-size: 14px; padding: 5px 8px; border-radius: 4px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  </style>
+</head> 
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sanika Misal</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Tasks</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certificate">Certificate</a></li>
+          <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7" data-aos="fade-right">
+          <div class="badge-custom">Diploma · E&TC Engineering</div>
+          <h1>Hi, I'm <span id="typing"></span></h1>
+          <p class="mt-4">Electronics & Telecommunication Engineer · Web Enthusiast</p>
+          <p>Passionate about applying technical knowledge, building responsive websites, and solving real-world problems through code and innovation </p>
+          <div class="mt-4">
+            <a href="#contact" class="btn btn-custom me-3">Contact Me</a>
+            <a href="#" class="btn btn-outline-custom">Resume</a>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center" data-aos="zoom-in">
+          <img src="image/sanika.png" class="about-img img-fluid" alt="Sanika Misal">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section-padding" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 text-center" data-aos="fade-right">
+          <img src="image/Technical girl_files/2d96bc8a-1bb1-4f39-9758-f77bb969c663.png" class="hero-avatar img-fluid" alt="Sanika Misal">
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <h3 class="mb-3">Hi, I'm <span class="gradient-text">Sanika Misal </span></h3>
+          <p>I am a Diploma in Electronics & Telecommunication Engineering student at Shivaji Polytechnic, Sangola. I am passionate about Web Development, Microcontroller Programming, and Analog/Digital Electronics..I am a dedicated and results-oriented student currently in my third year of a Diploma in Electronic and TeleCommunication Engineering at Shivaji Polytechnic College Sangola, affiliated with MSBTE, Mumbai.I like also Car driving.My future Goal is Successful Engineer.</p>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <p><strong>Name :</strong> Sanika Suresh Misal</p>
+              <p><strong>Email :</strong> <a href="mailto:sanikamisal964@gmail.com" class="email-link">sanikamisal964@gmail.com</a></p>
+              <p><strong>Phone :</strong> +91 9049545862</p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Education :</strong> Diploma E&TC</p>
+              <p><strong>College :</strong> Shivaji Polytechnic Sangola</p>
+              <p><strong>Location :</strong> Chinake, Sangola, Maharashtra</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-custom mt-3">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section-padding" id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="skill-item"><div class="skill-label"><span>Basic Electronic</span><span>85%</span></div><div class="progress"><div class="progress-bar html" style="width:85%">85%</div></div></div>
+          <div class="skill-item"><div class="skill-label"><span>Analog Electronic</span><span>80%</span></div><div class="progress"><div class="progress-bar css" style="width:80%">80%</div></div></div>
+          <div class="skill-item"><div class="skill-label"><span>Communication System (Basic)</span><span>80%</span></div><div class="progress"><div class="progress-bar bootstrap" style="width:80%">80%</div></div></div>
+          <div class="skill-item"><div class="skill-label"><span>Bootstrap</span><span>70%</span></div><div class="progress"><div class="progress-bar js" style="width:70%">70%</div></div></div>
+          <div class="skill-item"><div class="skill-label"><span>CSS</span><span>75%</span></div><div class="progress"><div class="progress-bar c" style="width:75%">75%</div></div></div>
+          <div class="skill-item"><div class="skill-label"><span>HTML</span><span>70%</span></div><div class="progress"><div class="progress-bar dbms" style="width:70%">70%</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section-padding" id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in"><div class="about-card text-center"><i class="bi bi-lightbulb display-4 text-info"></i><h5 class="mt-3">Automatic Street Light</h5><p>LDR-based controller</p></div></div>
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in"><div class="about-card text-center"><i class="bi bi-lightbulb display-4 text-info"></i><h5 class="mt-3">FM Transmitter</h5><p>8051 Microcontroller</p></div></div>
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in"><div class="about-card text-center"><i class="bi bi-clock display-4 text-info"></i><h5 class="mt-3">Digital Clock</h5><p>7-segment display</p></div></div>
+        <div class="col-md-6 col-lg-3" data-aos="zoom-in"><div class="about-card text-center"><i class="bi bi-person-workspace display-4 text-info"></i><h5 class="mt-3">Portfolio Website</h5><p>Personal Developer Portfolio</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ITR PRACTICAL TASKS (with DOWNLOAD button) ===== -->
+  <section class="section-padding" id="gallery">
+    <div style="width:100%; max-width:1100px; margin:auto; padding:20px;">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <h2 class="section-title" style="margin-bottom:0;">ITR Practical Tasks</h2>
+        <button class="download-section-btn" id="downloadTasksBtn"><i class="bi bi-download"></i> Download Tasks</button>
+      </div>
+      <div id="tasksContainer" class="task-scroll">
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/calculator.png" alt="Calculator"><h5>Calculator</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/calculator.png" data-title="Calculator">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/Time table.png" alt="Time Table"><h5>Time Table</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/Time table.png" data-title="Time Table">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/student registration.png" alt="Registration Form"><h5>Registration Form</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/student registration.png" data-title="Registration Form">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/validate form.png" alt="Task"><h5>Task</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/validate form.png" data-title="Task">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/Resume.png" alt="Resume"><h5>Resume Project</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/Resume.png" data-title="Resume Project">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/website.png" alt="Portfolio"><h5>Portfolio Website</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/website.png" data-title="Portfolio Website">View</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+ 
+ <!-- ===== CERTIFICATES (with DOWNLOAD button) ===== -->
+  <section class="section-padding" id="certificate">
+    <div style="width:100%; max-width:1100px; margin:auto; padding:20px;">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <h2 class="section-title" style="margin-bottom:0;">Certificates</h2>
+        <button class="download-section-btn" id="downloadCertBtn"><i class="bi bi-download"></i> Download Certificates</button>
+      </div>
+      <div id="certContainer" class="task-scroll">
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/workshop.JPG" alt="Workshop"><h5>Workshop</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/workshop.JPG" data-title="Workshop Certificate">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/sports..jpg" alt="Sport"><h5>Sport</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/sports..jpg" data-title="Sport Certificate">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/codexlabz.jpg" alt="Codexlabz"><h5>Codexlabz</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/codexlabz.jpg" data-title="Codexlabz Certificate">View</span></div></div></div>
+        <div class="task-scroll-item"><div class="card-bg"><img src="image/sportss.jpg" alt="sports"><h5>Sports</h5><div class="text-center pb-2"><span class="view-btn" data-bs-toggle="modal" data-bs-target="#taskModal" data-img="image/sportss.jpg" data-title="Sports Certificate">View</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACHIEVEMENTS ===== -->
+  <section class="section-padding" id="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements</h2>
+      <div class="row g-4">
+        <div class="col-md-4"><div class="about-card text-center"><h5 class="text-info">🏆 First Class with Distinction</h5><p>Secured in First Year Diploma</p></div></div>
+        <div class="col-md-4"><div class="about-card text-center"><h5 class="text-info">🏆 Technical Quiz Buzz</h5><p>Participated at State Level</p></div></div>
+        <div class="col-md-4"><div class="about-card text-center"><h5 class="text-info">🏆 Web Development</h5><p>Completed Web Development Certificate</p></div></div>
+        <div class="col-md-4"><div class="about-card text-center"><h5 class="text-info">🏆 Microcontroller Workshop</h5><p>Hands-on 8051 workshop</p></div></div>
+        <div class="col-md-4"><div class="about-card text-center"><h5 class="text-info">🏆 State Level Robo Race</h5><p>Participated in State Level Robo Race Competition</p></div></div>
+        <div class="col-md-4"><div class="about-card text-center"><h5 class="text-info">🏆 National Level Sport</h5><p>Participant in Zonal and Interzonal Kabbadi</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section class="section-padding" id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="table-responsive">
+        <table class="table table-dark table-bordered">
+          <thead><tr><th>Year</th><th>Course</th><th>Institute</th></tr></thead>
+          <tbody>
+            <tr><td>2024-Present</td><td>Diploma E&TC Engineering</td><td>Shivaji Polytechnic Sangola</td></tr>
+            <tr><td>2024</td><td>SSC</td><td>Maharashtra State Board</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section-padding" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <form id="contactForm" class="about-card">
+            <div class="mb-3"><input type="text" id="name" class="form-control" placeholder="Your Name" required></div>
+            <div class="mb-3"><input type="email" id="email" class="form-control" placeholder="Email Address" required></div>
+            <div class="mb-3"><input type="text" id="subject" class="form-control" placeholder="Subject"></div>
+            <div class="mb-3"><textarea id="message" class="form-control" rows="5" placeholder="Message"></textarea></div>
+            <div class="mb-3"><label id="captchaQuestion" class="text-info"></label><input type="number" id="captchaAnswer" class="form-control mt-2" placeholder="Enter Answer"></div>
+            <button type="submit" class="btn btn-custom">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-4">
+    <p>© 2026 Sanika Misal | Built with Bootstrap 5</p>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOAT ===== -->
+  <a href="https://wa.me/919049545862?text=Hello%20Sanika%2C%20I%20saw%20your%20portfolio!" class="whatsapp-float"><i class="bi bi-whatsapp"></i></a>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="topBtn"><i class="bi bi-arrow-up"></i></button>
+
+  <!-- ===== MODAL for VIEW ===== -->
+  <div class="modal fade" id="taskModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title" id="modalTitle">Task</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body text-center"><img id="modalImage" src="" alt="preview" style="max-height:70vh; width:auto; max-width:100%; border-radius:12px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    // Typing
+    const text = "Sanika Misal";
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 120);
+      }
+    }
+    typeWriter();
+
+    // Back to top
+    window.addEventListener("scroll", () => {
+      document.getElementById("topBtn").style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    document.getElementById("topBtn").onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    // Captcha
+    let n1, n2;
+    function generateCaptcha() {
+      n1 = Math.floor(Math.random() * 10) + 1;
+      n2 = Math.floor(Math.random() * 10) + 1;
+      document.getElementById("captchaQuestion").innerHTML = `Captcha: ${n1} + ${n2} = ?`;
+      document.getElementById("captchaAnswer").value = "";
+    }
+    generateCaptcha();
+
+    // Contact form
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let ans = parseInt(document.getElementById("captchaAnswer").value);
+      if (ans !== (n1 + n2)) {
+        alert("Wrong Captcha! Please try again.");
+        generateCaptcha();
+        return;
+      }
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let subject = document.getElementById("subject").value;
+      let message = document.getElementById("message").value;
+      let textMsg = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
+      window.open("https://wa.me/919049545862?text=" + encodeURIComponent(textMsg), "_blank");
+      generateCaptcha();
+    });
+
+    // ===== MODAL: set image & title =====
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        const imgSrc = this.getAttribute('data-img');
+        const title = this.getAttribute('data-title') || 'Preview';
+        document.getElementById('modalImage').src = imgSrc;
+        document.getElementById('modalTitle').textContent = title;
+      });
+    });
+
+    // ===== DOWNLOAD: Tasks =====
+    document.getElementById('downloadTasksBtn').addEventListener('click', function() {
+      const el = document.getElementById('tasksContainer');
+      html2canvas(el, { scale: 2, backgroundColor: '#0f172a' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'ITR_Tasks.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    });
+
+    // ===== DOWNLOAD: Certificates =====
+    document.getElementById('downloadCertBtn').addEventListener('click', function() {
+      const el = document.getElementById('certContainer');
+      html2canvas(el, { scale: 2, backgroundColor: '#0f172a' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'Certificates.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    });
+  </script>
+
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,mr,gu,ta,te,bn,kn,ml,pa,ur',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
